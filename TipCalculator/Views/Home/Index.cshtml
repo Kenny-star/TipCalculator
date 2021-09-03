@@ -1,0 +1,36 @@
+﻿    <!--Allows access to the TipCalculatorModel class, in this case it will be the COM(cost of meal) that will be used-->
+    @model TipCalculatorModel
+    @{
+        ViewBag.Title = "Tip Calculator";
+    }
+    <h1>Tip Calculator</h1>
+
+    <!--Prepares a post request and calls the default Index method from the HomeController.cs-->
+    <form asp-action="Index" method="post">
+        <!--Displays the validations/error messages-->
+        <div asp-validation-summary="All"></div>
+
+        <div>
+            <label asp-for="COM">Cost of meal</label>
+            <!--Sets the COM(cost of meal) attribute from the TipCalculatorModel class-->
+            <input asp-for="COM" />
+        </div>
+
+        <div>
+            <label>15% tip:</label>
+            <!--Uses the ViewBag dictionary to output the stored tip value from the TipCalculatorModel class and formats it-->
+            <span>@ViewBag.tip15.ToString("C2")</span>
+        </div>
+
+        <div>
+            <label>20% tip:</label>
+            <span>@ViewBag.tip20.ToString("C2")</span>
+        </div>
+        <div>
+            <label>25% tip:</label>
+            <span>@ViewBag.tip25.ToString("C2")</span>
+        </div>
+
+        <button type="submit">Calculate</button>
+        <a asp-action="Index">Clear</a>
+    </form>
